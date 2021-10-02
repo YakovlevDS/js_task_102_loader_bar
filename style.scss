@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgb(64, 3, 75);
+  color: green;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide { display: none; }
+
+.loader {
+  position: relative;
+  width: 320px; height: 320px;
+  text-align: center;
+  font-size: 24px;
+  user-select: none;
+
+  --loaderBarWidth: 0;
+  --loaderWheelAngle: 0;
+
+  &_text {
+    position: absolute;
+    bottom: 220px; left: 0;
+    width: 320px;
+  }
+
+  &_wheel {
+    position: absolute;
+    top: 110px; left: 110px;
+    border-radius: 50%;
+    background-image: repeating-conic-gradient(#111, rgb(6, 77, 6), #111 30deg);
+    border: 3px solid;
+    transform: rotate(var(--loaderWheelAngle));
+  }
+
+  &_arrows {
+    position: relative;
+    width: 100px; height: 100px;
+    background-color: #000;
+    border-radius: 50%;
+    mix-blend-mode: lighten;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 50%; height: 100%;
+      background-image:
+        conic-gradient(from 45deg at 35px 77px, #fff 90deg, #fff0 90deg),
+        radial-gradient(circle at 50px 57px, #000 25px, #0000 26px),
+        radial-gradient(circle at 50px 43px, #fff 29px, #fff0 30px)
+        ;
+    }
+
+    &::after {
+      transform: rotate(180deg);
+      transform-origin: right;
+    }
+  }
+
+  &_bar {
+    position: absolute;
+    top: 240px; left: 0;
+    width: 320px; height: 40px;
+    border: 2px solid;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: var(--loaderBarWidth, 0); height: 100%;
+      background-color: rgb(9, 61, 35);
+    }
+  }
+}
+
+.postLoader {
+  position: relative;
+  width: 320px;
+  text-align: center;
+  user-select: none;
+
+  &_text {
+    font-size: 24px;
+    margin-bottom: 0.5em;
+  }
+
+  &_btn {
+    padding: 0.5em 1em;
+    background-color: green;
+    color: #1b27b2;
+    border-radius: 30%;
+  }
+}
